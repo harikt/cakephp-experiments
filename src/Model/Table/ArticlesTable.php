@@ -21,6 +21,7 @@ class ArticlesTable extends Table
         $this->addBehavior('Translate', [
             'strategyClass' => ShadowTableStrategy::class,
             'fields' => ['title', 'body'],
+            // 'validator' => 'translated'
         ]);
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',

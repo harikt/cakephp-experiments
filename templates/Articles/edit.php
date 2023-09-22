@@ -4,13 +4,16 @@
 <?php
 echo $this->Form->create($article);
 echo $this->Form->control('user_id', ['type' => 'hidden']);
-// echo $this->Form->control('title');
-?>
+echo $this->Form->control('title');
+echo $this->Form->control('body', ['rows' => '3']);
+/*
 <fieldset>
     <legend>English</legend>
     <?= $this->Form->control('_translations.en_GB.title'); ?>
     <?= $this->Form->control('_translations.en_GB.body', ['rows' => '3']); ?>
 </fieldset>
+*/
+?>
 <fieldset>
     <legend>Spanish</legend>
     <?= $this->Form->control('_translations.es_AR.title'); ?>

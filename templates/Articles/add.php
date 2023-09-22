@@ -1,6 +1,6 @@
 <!-- File: templates/Articles/add.php -->
 
-<h1>Add Article : Default language field : $this->Form->control('title').</h1>
+<h1>Add Article : ('title').</h1>
 <?php
 echo $this->Form->create($article);
 // Hard code the user for now.
