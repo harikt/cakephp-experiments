@@ -20,7 +20,8 @@ class ArticlesController extends AppController
     {
         parent::initialize();
 
-        I18n::setLocale('en_AR');
+        $lang = $this->request->getQuery('lang', 'es_AR');
+        I18n::setLocale($lang);
     }
 
     public function index()
@@ -35,17 +36,23 @@ class ArticlesController extends AppController
 
     public function view($slug = null)
     {
-        I18n::setLocale('es_AR');
-
         // Update retrieving tags with contain()
         $article = $this->Articles
-            ->findBySlug($slug)
+            // ->findBySlug($slug)
 
-            // ->find('translations')
-            // ->where(['slug' => $slug])
+            ->find('translations')
+            ->where(['slug' => $slug])
 
             ->contain('Tags')
             ->firstOrFail();
+
+        pr("Current language $lang ->title : " . $article->title);
+
+        // This will print the details
+        pr("Using ->translation('es_AR')->title : " . $article->translation('es_AR')->title);
+
+        // This is not printing the details
+        pr("Using ->translation('en_GB')->title : " . $article->translation('en_GB')->title);
 
         // pr($article);
         // exit;
@@ -98,7 +105,7 @@ class ArticlesController extends AppController
 
     public function edit($slug)
     {
-        I18n::setLocale('es_AR');
+        I18n::setLocale('en_GB');
 
         $article = $this->Articles
             ->find('translations')
