@@ -19,30 +19,47 @@ class ArticlesController extends AppController
     public function initialize(): void
     {
         parent::initialize();
-
-        I18n::setLocale('en_AR');
     }
 
     public function index()
     {
-        // Paginate the ORM table.
-        // $this->set('articles', $this->paginate($this->Articles));
+        I18n::setLocale('es_AR');
+        // I18n::setLocale('en_GB');
+        // $this->Articles->setLocale('en_GB');
 
         // Paginate a partially completed query
-        // $query = $this->Articles->find();
-        $this->set('articles', $this->paginate($this->Articles->find('translations')));
+        $query = $this->Articles->find('translations');
+
+        // foreach ($query as $r) {
+        //     pr($r->title);
+        // }
+        // exit;
+
+        // Paginate the ORM table.
+        $this->set('articles', $this->paginate($query));
     }
 
     public function view($slug = null)
     {
-        I18n::setLocale('en_GB');
+        // I18n::setLocale('en_GB');
+        I18n::setLocale('es_AR');
+        // $this->Articles->setLocale('es_AR');
 
         // Update retrieving tags with contain()
         $article = $this->Articles
             ->find('translations')
+            // ->find()
             ->where(['slug' => $slug])
             ->contain('Tags')
             ->firstOrFail();
+
+        pr("Current language es_AR ->title : " . $article->title);
+
+        // This will print the details
+        pr("Using ->translation('es_AR')->title : " . $article->translation('es_AR')->title);
+
+        // Not printing anything
+        pr("Using ->translation('en_GB')->title : " . $article->translation('en_GB')->title);
 
         // pr($article);
         // exit;
