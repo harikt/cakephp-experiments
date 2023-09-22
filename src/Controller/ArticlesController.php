@@ -36,6 +36,8 @@ class ArticlesController extends AppController
 
     public function view($slug = null)
     {
+        $lang = I18n::getLocale();
+
         // Update retrieving tags with contain()
         $article = $this->Articles
             // ->findBySlug($slug)
