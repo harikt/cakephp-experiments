@@ -112,16 +112,16 @@ class ArticlesTable extends Table
         return $query->groupBy(['Articles.id']);
     }
 
-    public function validationDefault(Validator $validator): Validator
-    {
-        $validator
-            ->notEmptyString('title')
-            ->minLength('title', 10)
-            ->maxLength('title', 255)
+    // public function validationDefault(Validator $validator): Validator
+    // {
+    //     $validator
+    //         ->notEmptyString('title')
+    //         ->minLength('title', 10)
+    //         ->maxLength('title', 255)
 
-            ->notEmptyString('body')
-            ->minLength('body', 10);
+    //         ->notEmptyString('body')
+    //         ->minLength('body', 10);
 
-        return $validator;
-    }
+    //     return $validator;
+    // }
 }
