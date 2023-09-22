@@ -122,6 +122,9 @@ class ArticlesController extends AppController
 
     public function edit($slug)
     {
+        // If there are multiple translations updated in a single call
+        // 1. Your default language should be set to locale
+        // 2. The default language field will be title, rest of the fields will be _translations.<lang>.<field> format in the view
         I18n::setLocale('en_GB');
 
         $article = $this->Articles
