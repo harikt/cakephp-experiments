@@ -1,20 +1,16 @@
 <!-- File: templates/Articles/add.php -->
 
-<h1>Add Article : Default language field : $this->Form->control('title').</h1>
+<h1>Add Article : Languages using $this->Form->control('_translations.en_GB.title').</h1>
 <?php
 echo $this->Form->create($article);
 // Hard code the user for now.
 echo $this->Form->control('user_id', ['type' => 'hidden', 'value' => 1]);
-echo $this->Form->control('title');
-echo $this->Form->control('body', ['rows' => '3']);
-/*
+?>
 <fieldset>
     <legend>English</legend>
     <?= $this->Form->control('_translations.en_GB.title'); ?>
     <?= $this->Form->control('_translations.en_GB.body', ['rows' => '3']); ?>
 </fieldset>
-*/
-?>
 <fieldset>
     <legend>Spanish</legend>
     <?= $this->Form->control('_translations.es_AR.title'); ?>

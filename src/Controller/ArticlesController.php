@@ -53,6 +53,12 @@ class ArticlesController extends AppController
         $this->set(compact('article'));
     }
 
+
+    public function add2()
+    {
+        $this->add();
+    }
+
     public function add()
     {
         I18n::setLocale('en_GB');
