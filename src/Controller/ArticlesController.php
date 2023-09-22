@@ -86,9 +86,19 @@ class ArticlesController extends AppController
         $this->set('article', $article);
     }
 
+    public function edit3($slug)
+    {
+        $this->edit($slug);
+    }
+
+    public function edit2($slug)
+    {
+        $this->edit($slug);
+    }
+
     public function edit($slug)
     {
-        I18n::setLocale('en_GB');
+        I18n::setLocale('es_AR');
 
         $article = $this->Articles
             ->find('translations')

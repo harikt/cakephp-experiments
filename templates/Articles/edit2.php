@@ -1,6 +1,6 @@
 <!-- File: templates/Articles/edit.php -->
 
-<h1>Edit Article</h1>
+<h1>Edit 2 Article</h1>
 <?php
 echo $this->Form->create($article);
 echo $this->Form->control('user_id', ['type' => 'hidden']);
