@@ -35,12 +35,15 @@ class ArticlesController extends AppController
 
     public function view($slug = null)
     {
-        I18n::setLocale('en_GB');
+        I18n::setLocale('es_AR');
 
         // Update retrieving tags with contain()
         $article = $this->Articles
-            ->find('translations')
-            ->where(['slug' => $slug])
+            ->findBySlug($slug)
+
+            // ->find('translations')
+            // ->where(['slug' => $slug])
+
             ->contain('Tags')
             ->firstOrFail();
 
