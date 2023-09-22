@@ -46,7 +46,7 @@ class ArticlesTable extends Table
             // }
 
             // Without translation
-            $sluggedTitle = Text::slug($entity->title);
+            $sluggedTitle = Text::slug($entity->title ? $entity->title : $entity->translation('en_GB')->title);
             // trim slug to maximum length defined in schema
             $entity->slug = substr($sluggedTitle, 0, 191);
         }
