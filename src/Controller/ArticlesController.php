@@ -63,11 +63,6 @@ class ArticlesController extends AppController
     }
 
 
-    public function add2()
-    {
-        $this->add();
-    }
-
     public function add()
     {
         I18n::setLocale('en_GB');
@@ -95,15 +90,35 @@ class ArticlesController extends AppController
         $this->set('article', $article);
     }
 
-    public function edit3($slug)
-    {
-        $this->edit($slug);
-    }
 
     public function edit2($slug)
     {
-        $this->edit($slug);
+        $article = $this->Articles
+            // ->find('translations')
+            // ->where(['slug' => $slug])
+            ->findBySlug($slug)
+            ->contain('Tags')
+            ->firstOrFail();
+
+        if ($this->request->is(['post', 'put'])) {
+            $this->Articles->patchEntity($article, $this->request->getData());
+            if ($this->Articles->save($article)) {
+                $this->Flash->success(__('Your article has been updated.'));
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('Unable to update your article.'));
+        }
+
+        // Get a list of tags.
+        $tags = $this->Articles->Tags->find('list')->all();
+
+
+        // Set tags to the view context
+        $this->set('tags', $tags);
+
+        $this->set('article', $article);
     }
+
 
     public function edit($slug)
     {
