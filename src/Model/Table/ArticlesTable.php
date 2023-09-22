@@ -21,7 +21,7 @@ class ArticlesTable extends Table
         $this->addBehavior('Translate', [
             'strategyClass' => ShadowTableStrategy::class,
             'fields' => ['title', 'body'],
-            // 'validator' => 'translated'
+            'validator' => 'translated'
         ]);
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
@@ -113,16 +113,29 @@ class ArticlesTable extends Table
         return $query->groupBy(['Articles.id']);
     }
 
-    // public function validationDefault(Validator $validator): Validator
-    // {
-    //     $validator
-    //         ->notEmptyString('title')
-    //         ->minLength('title', 10)
-    //         ->maxLength('title', 255)
+    public function validationDefault(Validator $validator): Validator
+    {
+        $validator
+            ->notEmptyString('title')
+            ->minLength('title', 10)
+            ->maxLength('title', 255)
 
-    //         ->notEmptyString('body')
-    //         ->minLength('body', 10);
+            ->notEmptyString('body')
+            ->minLength('body', 10);
 
-    //     return $validator;
-    // }
+        return $validator;
+    }
+
+    public function validationTranslated(Validator $validator): Validator
+    {
+        $validator
+            ->notEmptyString('title')
+            ->minLength('title', 10)
+            ->maxLength('title', 255)
+
+            ->notEmptyString('body')
+            ->minLength('body', 10);
+
+        return $validator;
+    }
 }

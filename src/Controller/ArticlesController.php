@@ -48,13 +48,13 @@ class ArticlesController extends AppController
             ->contain('Tags')
             ->firstOrFail();
 
-        pr("Current language $lang ->title : " . $article->title);
+        // pr("Current language $lang ->title : " . $article->title);
 
-        // This will print the details
-        pr("Using ->translation('es_AR')->title : " . $article->translation('es_AR')->title);
+        // // This will print the details
+        // pr("Using ->translation('es_AR')->title : " . $article->translation('es_AR')->title);
 
-        // This is not printing the details
-        pr("Using ->translation('en_GB')->title : " . $article->translation('en_GB')->title);
+        // // This is not printing the details
+        // pr("Using ->translation('en_GB')->title : " . $article->translation('en_GB')->title);
 
         // pr($article);
         // exit;
