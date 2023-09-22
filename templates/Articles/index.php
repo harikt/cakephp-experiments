@@ -14,7 +14,7 @@
     <?php foreach ($articles as $article) : ?>
         <tr>
             <td>
-                <?= $this->Html->link($article->translation('es_AR')->title, ['action' => 'view', $article->slug]) ?>
+                <?= $this->Html->link($article->title, ['action' => 'view', $article->slug]) ?>
             </td>
             <td>
                 <?= $article->created->format(DATE_RFC850) ?>
