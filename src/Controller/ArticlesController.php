@@ -91,6 +91,10 @@ class ArticlesController extends AppController
     }
 
 
+    /**
+     * Individual edit for language
+     * Language is passed as a query param. @see initialize()
+     */
     public function edit2($slug)
     {
         $article = $this->Articles
