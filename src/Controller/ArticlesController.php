@@ -41,8 +41,8 @@ class ArticlesController extends AppController
 
     public function view($slug = null)
     {
-        I18n::setLocale('en_GB');
-        // I18n::setLocale('es_AR');
+        // I18n::setLocale('en_GB');
+        I18n::setLocale('es_AR');
         // $this->Articles->setLocale('es_AR');
 
         // Update retrieving tags with contain()
@@ -53,13 +53,13 @@ class ArticlesController extends AppController
             ->contain('Tags')
             ->firstOrFail();
 
-        // pr("Current language es_AR ->title : " . $article->title);
+        pr("Current language es_AR ->title : " . $article->title);
 
         // This will print the details
-        // pr("Using ->translation('es_AR')->title : " . $article->translation('es_AR')->title);
+        pr("Using ->translation('es_AR')->title : " . $article->translation('es_AR')->title);
 
         // Not printing anything
-        // pr("Using ->translation('en_GB')->title : " . $article->translation('en_GB')->title);
+        pr("Using ->translation('en_GB')->title : " . $article->translation('en_GB')->title);
 
         // pr($article);
         // exit;
