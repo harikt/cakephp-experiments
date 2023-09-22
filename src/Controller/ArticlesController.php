@@ -30,8 +30,8 @@ class ArticlesController extends AppController
         // $this->set('articles', $this->paginate($this->Articles));
 
         // Paginate a partially completed query
-        // $query = $this->Articles->find();
-        $this->set('articles', $this->paginate($this->Articles->find('translations')));
+        // $query = $this->Articles->find('translations');
+        $this->set('articles', $this->paginate($this->Articles->find()));
     }
 
     public function view($slug = null)
